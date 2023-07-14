@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
@@ -45,6 +45,11 @@ const params = [
     name: "Длина",
     type: Types.String,
   },
+  {
+    id: 3,
+    name: "Тест",
+    type: Types.String,
+  },
 ];
 
 const model = {
@@ -65,12 +70,21 @@ const ParamEditor: React.FC<Props> = ({ params, model }) => {
   const [paramValues, setParamValues] = useState(model.paramValues);
 
   const handleChange = (paramId: number, value: string) => {
-    const updatedParamValues = paramValues.map((paramValue) => {
-      if (paramValue.paramId === paramId) {
-        return { ...paramValue, value };
-      }
-      return paramValue;
-    });
+    const existingIndex = paramValues.findIndex(
+      (paramValue) => paramValue.paramId === paramId
+    );
+
+    const updatedParamValues = [...paramValues];
+
+    if (existingIndex !== -1) {
+      updatedParamValues[existingIndex] = {
+        ...paramValues[existingIndex],
+        value,
+      };
+    } else {
+      const lastParamId = paramValues[paramValues.length - 1]?.paramId ?? 0;
+      updatedParamValues.push({ paramId: lastParamId + 1, value });
+    }
 
     setParamValues(updatedParamValues);
   };
@@ -79,7 +93,9 @@ const ParamEditor: React.FC<Props> = ({ params, model }) => {
     return { ...model, paramValues };
   };
 
-  console.log(getModel());
+  useEffect(() => {
+    console.log(getModel());
+  }, []);
 
   return (
     <div id="form">
