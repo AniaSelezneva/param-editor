@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/param-editor/static/css/main.4f10b1c0.css",
-    "main.js": "/param-editor/static/js/main.56a62b6f.js",
+    "main.js": "/param-editor/static/js/main.89f881cb.js",
     "index.html": "/param-editor/index.html",
     "main.4f10b1c0.css.map": "/param-editor/static/css/main.4f10b1c0.css.map",
-    "main.56a62b6f.js.map": "/param-editor/static/js/main.56a62b6f.js.map"
+    "main.89f881cb.js.map": "/param-editor/static/js/main.89f881cb.js.map"
   },
   "entrypoints": [
     "static/css/main.4f10b1c0.css",
-    "static/js/main.56a62b6f.js"
+    "static/js/main.89f881cb.js"
   ]
 }
