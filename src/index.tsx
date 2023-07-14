@@ -4,13 +4,15 @@ import "./index.css";
 
 enum Types {
   String = "string",
+  Number = "number",
+  Select = "select",
 }
 
 // Интерфейсы
 interface Param {
   id: number;
   name: string;
-  type: Types.String;
+  type: Types;
 }
 
 interface ParamValue {
